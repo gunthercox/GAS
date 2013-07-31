@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+        <title>Government as a Service</title>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen,projection"/>
+
+        <style>
+/* pricing table */
+.pricing-tables {
+  padding: 20px;
+}
+.pricing-tables h1 {
+  font-size: 48px;
+}
+.pricing-tables .plan.first {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px !important;
+}
+.pricing-tables .plan.last {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.pricing-tables .plan.recommended {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.pricing-tables .plan.recommended .head {
+  /*margin-bottom: 20px;*/
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.pricing-tables.attached .col-sm-4, .pricing-tables.attached .col-md-4, .pricing-tables.attached .col-sm-3, .pricing-tables.attached .col-md-3 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.pricing-tables.attached .plan {
+  border-radius: 0;
+}
+.pricing-tables.attached .plan .head {
+  border-radius: 0;
+}
+/*.pricing-tables.attached .plan.recommended {
+  border-radius: 4px;
+}*/
+/*.pricing-tables.attached .plan.recommended .head {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}*/
+.pricing-tables.attached .plan.last {
+  border-bottom-right-radius: 4px;
+}
+.pricing-tables.attached .plan.last .head {
+  border-top-right-radius: 4px;
+}
+.pricing-tables.attached .plan.first {
+  border-bottom-left-radius: 4px;
+}
+.pricing-tables.attached .plan.first .head {
+  border-top-left-radius: 4px;
+}
+.plan {
+  box-shadow: 0 2px 2px rgba(10, 10, 10, 0.30) !important;
+  min-height: 100px;
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px 0;
+  padding-bottom: 25px;
+  text-align: center;
+}
+.plan .head {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 12px 16px;
+  background: #595959;
+  color: #fff;
+}
+.plan .head h1, .plan .head h2, .plan .head h3 {
+  padding: 0;
+  margin: 0;
+  font-weight: 100;
+}
+.plan .price {
+  border-top: 1px solid #eee;
+  margin: 0 auto 30px auto;
+  width: 80%;
+}
+.plan .price h3 {
+  font-size: 82px;
+  vertical-align: top;
+  line-height: 1;
+}
+.plan .price h3 span {
+  font-size: 38px;
+  vertical-align: top;
+  position: relative;
+  margin: 6px 0 0 -7px;
+  display: inline-block;
+}
+.plan .price h4 {
+  color: #aaa;
+  font-size: 14px;
+}
+.plan .btn {
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.plan ul {
+  list-style-type: none;
+  padding: 20px;
+  margin-top: 2px;
+}
+.plan ul li {
+  line-height: 22px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.plan ul li a {
+  text-decoration: underline;
+  color: #e6e9ed;
+}
+.plan ul li:last-child {
+  border-bottom: none;
+}
+.plan ul strong {
+  font-weight: 700;
+}
+.plan.recommended {
+  margin-top: 6px;
+  box-shadow: 0 0 22px rgba(10, 10, 10, 0.42);
+  position: relative;
+  z-index: 99;
+  border-radius: 4px;
+}
+.plan.recommended .head {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: #4e9a06;
+}
+.head.value{
+  background-color: #fdaf17;
+  /*margin-bottom: 48px;*/
+}
+.plan.recommended .btn {
+  margin-bottom: 10px;
+}
+@media screen and (min-width:770px) and (max-width:990px){
+  .plan .mediafix h3 {
+      font-size: 55px !important;
+      vertical-align: top;
+      line-height: 1;
+  }
+}
+
+        </style>
+    </head>
+
+<body>
+
+    <div class="navbar navbar-full navbar-static-top navbar-dark bg-inverse">
+        <a class="navbar-brand" href="#">GAS</a>
+          <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline float-xs-right">
+      <input class="form-control" type="text" placeholder="Search">
+      <button class="btn btn-outline-info" type="submit">Search</button>
+    </form>
+    </div>
+
+      <div class="navbar-collapse collapse inverse" id="navbar-header">
+      <div class="container-fluid">
+
+      </div>
+    </div>
+
+    <section class="jumbotron text-xs-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Government as a Service</h1>
+        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+        <p>
+          <a href="#" class="btn btn-primary">Main call to action</a>
+          <a href="#" class="btn btn-secondary">Secondary action</a>
+        </p>
+      </div>
+    </section>
+
+    <section>
+        <div class="col-centered col-lg-12">
+          <div class="pricing-tables attached ">
+            <div class="row ">
+              <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="plan  first">
+                  <div class="head">
+                    <h2>Starter</h2>
+                  </div>
+                  <ul class="item-list">
+                    <li>
+                      <strong> Buliding  </strong>One time scraping</li>
+                    <li>
+                      <strong>$xxx4xxx</strong></li>
+                    <li>
+                      <strong>NIL</strong> </li>
+                    <li>
+                      <strong>Third party services</strong> As per use, will be added to bill</li>
+                  </ul>
+                  <div class="price mediafix">
+                    <h3>
+                      <span class="symbol">$</span>19</h3>
+                    <h4>per month</h4>
+                  </div>
+                  <a class="btn-clean btn-pad" href="index.html#contact">Order Now <i class="ion-ios-unlocked-outline"></i></a>
+                </div>
+              </div>
+
+              <div class="col-sm-3 col-md-2 col-lg-2">
+                <div class="plan first recommended">
+                  <div class="head">
+                    <h2>Pro</h2>
+                  </div>
+                  <ul class="item-list">
+                    <li>
+                      <strong> Buliding  </strong>One time scraping</li>
+                    <li>
+                      <strong>$xxx4xxx</strong></li>
+                    <li>
+                      <strong>NIL</strong> </li>
+                    <li>
+                      <strong>Third party services</strong> As per use, will be added to bill</li>
+                  </ul>
+                  <div class="price">
+                    <h3>
+                      <span class="symbol">$</span>19</h3>
+                    <h4>per month</h4>
+                  </div>
+                  <a class="btn-clean btn-pad" href="index.html#contact">Order Now <i class="ion-ios-unlocked-outline"></i></a>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-2 col-lg-2">
+                <div class="plan recommended">
+                  <div class="head">
+                    <h2>Pro</h2>
+                  </div>
+                  <ul class="item-list">
+                    <li>
+                      <strong> Buliding  </strong>One time scraping</li>
+                    <li>
+                      <strong>$xxx4xxx</strong></li>
+                    <li>
+                      <strong>NIL</strong> </li>
+                    <li>
+                      <strong>Third party services</strong> As per use, will be added to bill</li>
+                  </ul>
+                  <div class="price">
+                    <h3>
+                      <span class="symbol">$</span>19</h3>
+                    <h4>per month</h4>
+                  </div>
+                  <a class="btn-clean btn-pad" href="index.html#contact">Order Now <i class="ion-ios-unlocked-outline"></i></a>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-2 col-lg-2">
+                <div class="plan last recommended">
+                  <div class="head">
+                    <h2>Pro</h2>
+                  </div>
+                  <ul class="item-list">
+                    <li>
+                      <strong> Buliding  </strong>One time scraping</li>
+                    <li>
+                      <strong>$xxx4xxx</strong></li>
+                    <li>
+                      <strong>NIL</strong> </li>
+                    <li>
+                      <strong>Third party services</strong> As per use, will be added to bill</li>
+                  </ul>
+                  <div class="price">
+                    <h3>
+                      <span class="symbol">$</span>19</h3>
+                    <h4>per month</h4>
+                  </div>
+                  <a class="btn-clean btn-pad" href="index.html#contact">Order Now <i class="ion-ios-unlocked-outline"></i></a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="plan last">
+                  <div class="head value">
+                    <h2>Best Value</h2>
+                  </div>
+                  <ul class="item-list">
+                    <li>
+                      <strong> Buliding  </strong>One time scraping</li>
+                    <li>
+                      <strong>$xxx4xxx</strong></li>
+                    <li>
+                      <strong>NIL</strong> </li>
+                    <li>
+                      <strong>Third party services</strong> As per use, will be added to bill</li>
+                  </ul>
+                  <div class="price">
+                    <h3>
+                      <span class="symbol">$</span>19</h3>
+                    <h4>per month</h4>
+                  </div>
+                  <a class="btn-clean btn-pad" href="index.html#contact">Order Now <i class="ion-ios-unlocked-outline"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- row-->
+          </div>
+          <!-- pricing-tables -->
+        </div>
+        <br>
+
+      </section>
+
+    <div class="container">
+        <div class="row">
+            Insert price levels here.
+        </div>
+    </div>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-xs-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Something, blah blah blah.</p>
+      </div>
+    </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
