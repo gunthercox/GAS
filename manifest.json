@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Salvius Robot App",
+  "description": "Get updates directly from the Salvius open-source robot project.",
+  "version": "1.0",
+  "icons": {
+    "128": "icon.png"
+  },
+  "app": {
+    "urls": [
+      "http://salviusrobot.blogspot.com/"
+    ],
+    "launch": {
+      "web_url": "http://salviusrobot.blogspot.com/"
+    }
+  }
+}
