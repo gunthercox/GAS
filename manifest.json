@@ -8,10 +8,10 @@
   },
   "app": {
     "urls": [
-      "http://salviusrobot.blogspot.com/"
+      "./test.html"
     ],
     "launch": {
-      "web_url": "http://salviusrobot.blogspot.com/"
+      "web_url": "./test.html"
     }
   }
 }
