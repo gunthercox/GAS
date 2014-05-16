@@ -1,17 +1,29 @@
 {
+  // Required
   "manifest_version": 2,
-  "name": "Salvius Robot App",
-  "description": "Get updates directly from the Salvius open-source robot project.",
-  "version": "1.0",
+  "name": "My Extension",
+  "version": "0.0.0.1",
+
+  // Recommended
+  "default_locale": "en",
+  "description": "A plain text description",
   "icons": {
     "128": "icon.png"
   },
-  "app": {
-    "urls": [
-      "http://salviusrobot.blogspot.com/"
-    ],
-    "launch": {
-      "web_url": "http://salviusrobot.blogspot.com/"
-    }
+
+  // Pick one (or none)
+  /*"page_action": {
+    "default_icon": {
+      "128": "icon.png"
+    },
+    "default_title": "Test",
+    "default_popup": "popup.html"
+  },*/
+
+  // Optional
+  "author": "Gunther Cox",
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
   }
 }
