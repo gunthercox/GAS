@@ -5,7 +5,8 @@
   "description": "Connect to robots using Google Chrome.",
   "permissions": [
     "http://www.gravatar.com/",
-    "http://en.gravatar.com/"
+    "http://en.gravatar.com/",
+    "*://*/*"
   ],
   "icons": {
     "16": "img/icon16.png",

@@ -1,14 +1,6 @@
 var robot_count = 0;
 var robot_count_element = $(".js-robot-count");
 
-
-// http://192.168.1.11:4000/api/robots/Smith/devices/lightSensor/events
-var test_robot_ip = "192.168.1.9";
-var test_robot_response = {
-    "name": "salvius@salvius.org"
-};
-
-
 // TODO: robot head icon
 
 
@@ -55,20 +47,6 @@ Gravatar.prototype.email_is_valid = function(email) {
 var Robot = function(list) {
     this.list = list;
     this.element = $('<div class="col s6 m4 l4"></div>');
-
-
-    var gravatar = new Gravatar(test_robot_response["name"]);
-
-    gravatar.done(function(data) {
-        var thumbnail_url = data.entry[0].thumbnailUrl + "?s=200";
-
-        console.log(data.entry[0].displayName, thumbnail_url);
-    });
-
-    gravatar.error(function() {
-        // TODO: If an avatar could not be loaded
-    });
-
 };
 
 Robot.prototype.create = function(data, ip) {
@@ -112,32 +90,54 @@ Robot.prototype.create = function(data, ip) {
     });
 
     robot.list.add(this);
+
+    /* Get gravatar data */
+
+    var gravatar = new Gravatar(robot.data.name);
+
+    gravatar.done(function(data) {
+        var thumbnail_url = data.entry[0].thumbnailUrl + "?s=200";
+
+        console.log(data.entry[0].displayName, thumbnail_url);
+    });
+
+    gravatar.error(function() {
+        // TODO: If an avatar could not be loaded
+    });
 };
 
 Robot.prototype.destroy = function() {
     robot_count -= 1;
     robot_count_element.text(robot_count);
     this.element.remove();
+
+    Materialize.toast("You and " + this.data.name + " are no longer friends.", 4000)
 };
+
+
 
 var robots = new RobotList(".robot-list");
 
-var robot = new Robot(robots);
-robot.create(test_robot_response, test_robot_ip);
-
-
-
 $(".js-add-robot").click(function() {
 
-    var ip = $(".js-ip").val();
+    // Test robot json at http://salvius.org/test_robot.json
+    var url = $(".js-ip").val();
 
-    Materialize.toast("A friend request has been sent to " + ip, 4000)
+    Materialize.toast("A friend request has been sent to " + url, 4000);
 
-    var new_robot = new Robot(robots);
+    var request = $.get(url);
 
-    new_robot.create(test_robot_response, ip);
+    request.done(function(data) {
+        var new_robot = new Robot(robots);
+        new_robot.create(data, url);
 
-    Materialize.toast(test_robot_response.name + " has accepted your friend request.", 4000)
+        Materialize.toast(new_robot.data.name + " has accepted your friend request.", 4000)
+    });
+
+    request.error(function(data) {
+        Materialize.toast("No robot found.", 4000)
+    });
+
 });
 
 $(document).ready(function(){
