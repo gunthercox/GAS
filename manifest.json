@@ -1,17 +1,21 @@
 {
   "manifest_version": 2,
-  "name": "Salvius Robot App",
-  "description": "Get updates directly from the Salvius open-source robot project.",
-  "version": "1.0",
+  "version": "0.0.1",
+  "name": "Robot Controller",
+  "description": "Connect to robots using Google Chrome.",
+  "permissions": [
+    "http://www.gravatar.com/",
+    "http://en.gravatar.com/"
+  ],
   "icons": {
-    "128": "icon.png"
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   },
+  "offline_enabled": true,
   "app": {
-    "urls": [
-      "http://salviusrobot.blogspot.com/"
-    ],
-    "launch": {
-      "web_url": "http://salviusrobot.blogspot.com/"
+    "background": {
+      "scripts": ["js/background.js", "js/robot.js"]
     }
   }
 }
