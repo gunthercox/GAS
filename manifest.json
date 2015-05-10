@@ -8,9 +8,9 @@
     "http://en.gravatar.com/"
   ],
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
   },
   "offline_enabled": true,
   "app": {

@@ -1,6 +1,5 @@
 var robot_count = 0;
 var robot_count_element = $(".js-robot-count");
-var robot_list = $(".robot-list");
 
 
 // http://192.168.1.11:4000/api/robots/Smith/devices/lightSensor/events
@@ -8,6 +7,26 @@ var test_robot_ip = "192.168.1.9";
 var test_robot_response = {
     "name": "salvius@salvius.org"
 };
+
+
+// TODO: robot head icon
+
+
+var RobotList = function(list_container) {
+    this.data = {};
+    this.element = $(list_container);
+};
+
+RobotList.prototype.add = function(robot) {
+    console.log(robot.ip);
+
+    // TODO: Check to see if the robot is already in the list
+
+    this.element.append(robot.element);
+
+    this.data[robot.ip] = robot;
+};
+
 
 
 
@@ -19,6 +38,8 @@ var Gravatar = function(email) {
         var url = base + hash + ".json";
 
         return $.get(url);
+    } else {
+        // TODO: Return the default avatar if there is not a valid email address
     }
 
     return null;
@@ -31,9 +52,9 @@ Gravatar.prototype.email_is_valid = function(email) {
 
 
 
-var Robot = function(container, element) {
-    this.container = container;
-    this.element = element;
+var Robot = function(list) {
+    this.list = list;
+    this.element = $('<div class="col s6 m4 l4"></div>');
 
 
     var gravatar = new Gravatar(test_robot_response["name"]);
@@ -45,7 +66,7 @@ var Robot = function(container, element) {
     });
 
     gravatar.error(function() {
-        // TODO: In the case that a gravatar was not found, use the default
+        // TODO: If an avatar could not be loaded
     });
 
 };
@@ -53,42 +74,44 @@ var Robot = function(container, element) {
 Robot.prototype.create = function(data, ip) {
     robot_count += 1;
     robot_count_element.text(robot_count);
-    this.container.append(this.element);
 
-    var accordion = $('<ul class="collapsible z-depth-1" data-collapsible="accordion"></ul>');
+    this.data = data;
+    this.ip = ip;
+
+    var accordion = $('<ul class="collapsible teal z-depth-1" data-collapsible="accordion"></ul>');
 
     var avatar = $(
         '<li class="white">' +
             '<img class="responsive-img"/>' +
+
+            '<div class="fixed-action-btn right" style="position: relative; right: 5px; top: -45px;">' +
+                '<a class="btn-floating btn-large teal lighten-2">' +
+                    '<i class="large mdi-action-settings"></i>' +
+                '</a>' +
+                '<ul>' +
+                    '<li><a class="btn-floating red js-unfriend"><i class="large mdi-content-clear"></i></a></li>' +
+                  '</ul>' +
+              '</div>' +
+
         '</li>');
 
     avatar.find("img").prop("src", "salvius.png");
 
+    var name = $('<li class="collapsible-header teal white-text truncate center-align"></li>');
+    name.text(data.name);
+
     accordion.append(avatar);
+    accordion.append(name);
 
-    var settings = $('<li class="white"></li>');
-
-    var header = $(
-        '<div class="collapsible-header teal white-text">' +
-            '<strong></strong>' +
-        '</div>');
-
-    header.find("strong").html('<span><i class="mdi-action-settings"></i> ' + data.name + '</span>');
-
-    var body = $(
-        '<div class="collapsible-body">' +
-            '<p>' +
-                '<a class="btn orange">' +
-                    'Unfriend' +
-                '</a>' +
-            '</p>' +
-        '</div>');
-
-    settings.append(header);
-    settings.append(body);
-    accordion.append(settings);
     this.element.append(accordion);
 
+    var robot = this;
+
+    avatar.find(".js-unfriend").click(function() {
+        robot.destroy();
+    });
+
+    robot.list.add(this);
 };
 
 Robot.prototype.destroy = function() {
@@ -97,15 +120,26 @@ Robot.prototype.destroy = function() {
     this.element.remove();
 };
 
+var robots = new RobotList(".robot-list");
 
-
-var e = $('<div class="col s6 m4 l4"></div>');
-var robot = new Robot(robot_list, e);
+var robot = new Robot(robots);
 robot.create(test_robot_response, test_robot_ip);
 
-/*
-$("add-robot").click(function() {
-    var e = $("<div></div>");
-    var robot = new Robot(list, e);
-    robot.create();
-});*/
+
+
+$(".js-add-robot").click(function() {
+
+    var ip = $(".js-ip").val();
+
+    Materialize.toast("A friend request has been sent to " + ip, 4000)
+
+    var new_robot = new Robot(robots);
+
+    new_robot.create(test_robot_response, ip);
+
+    Materialize.toast(test_robot_response.name + " has accepted your friend request.", 4000)
+});
+
+$(document).ready(function(){
+    $('a[href="#about"]').leanModal();
+});
