@@ -4,19 +4,23 @@ var robot_count_element = $(".js-robot-count");
 // TODO: robot head icon
 
 
+
+
 var RobotList = function(list_container) {
     this.data = {};
     this.element = $(list_container);
 };
 
 RobotList.prototype.add = function(robot) {
-    console.log(robot.ip);
-
-    // TODO: Check to see if the robot is already in the list
-
-    this.element.append(robot.element);
 
     this.data[robot.ip] = robot;
+
+    chrome.storage.sync.set(this.data, function() {
+        // Notify that we saved.
+        console.log('Settings saved');
+    });
+
+    this.element.append(robot.element);
 };
 
 
@@ -107,11 +111,19 @@ Robot.prototype.create = function(data, ip) {
 };
 
 Robot.prototype.destroy = function() {
-    robot_count -= 1;
-    robot_count_element.text(robot_count);
-    this.element.remove();
+    /*
+    Remove the robot
+    */
+    var robot = this;
 
-    Materialize.toast("You and " + this.data.name + " are no longer friends.", 4000)
+    chrome.storage.sync.remove(this.ip, function() {
+        robot_count -= 1;
+        robot_count_element.text(robot_count);
+
+        robot.element.remove();
+
+        Materialize.toast("You and " + robot.data.name + " are no longer friends.", 4000)
+    });
 };
 
 
@@ -142,4 +154,15 @@ $(".js-add-robot").click(function() {
 
 $(document).ready(function(){
     $('a[href="#about"]').leanModal();
+
+    // Load any saved robots
+    chrome.storage.sync.get(function(data) {
+        var keys = Object.keys(data);
+
+        for (var i = 0; i < keys.length; i++) {
+            var robot = new Robot(robots);
+            robot.create(data[keys[i]], keys[i]);
+        }
+
+    });
 });
