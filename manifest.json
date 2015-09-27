@@ -2,9 +2,9 @@
   "manifest_version": 2,
   "minimum_chrome_version": "23",
 
-  "name": "Robot Controller",
+  "name": "Robot Control Panel",
   "short_name": "Controller",
-  "version": "0.0.3",
+  "version": "2.0.1",
 
   "description": "Connect to robots using Google Chrome.",
   "permissions": [

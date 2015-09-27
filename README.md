@@ -1,4 +1,4 @@
-SalviusChromeApp
-================
+Robot Control Panel
+===================
 
-A chrome web app for Salvius
+A web app for interacting with robots.
